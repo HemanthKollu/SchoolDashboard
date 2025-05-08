@@ -113,7 +113,7 @@ class _FinanceCardState extends State<FinanceCard> {
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                   ),
                   SizedBox(height: 30),
-                  Container(
+                  SizedBox(
                     width: 350,
                     child:  Column(children:
                     
