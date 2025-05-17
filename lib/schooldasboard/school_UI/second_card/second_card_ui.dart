@@ -17,33 +17,32 @@ class SecondCard extends StatefulWidget {
 class _SecondCardState extends State<SecondCard> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const [
-        ClassesCard(),
-        // _classesCard(screenWidth),
-        Row(
-          children: [
-            Column(
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 10),
+        child: Column(
+          children: const [
+            ClassesCard(),
+            Row(
               children: [
-                SupportTicketsCard(),
-                DcDetails(),
-                // _supportTicketsCard(screenWidth),
-                // _dcDetailsCard(screenWidth),
-              ],
-            ),
-            Column(
-              children: [
-                SupportVisitInfoCard(),
-                MultiMediaCard(),
-                FinanceCard()
-                // _supportsVisitInfoCard(screenWidth),
-                // _multiMediaInstallationCard(screenWidth),
-                // _financeCard(screenWidth),
+                Column(
+                  children: [
+                    FinanceCard(),
+                    DcDetails(),
+                  ],
+                ),
+                Column(
+                  children: [
+                    SupportVisitInfoCard(),
+                    MultiMediaCard(),
+                    SupportTicketsCard(),
+                  ],
+                )
               ],
             )
           ],
-        )
-      ],
+        ),
+      ),
     );
   }
 }

@@ -21,98 +21,124 @@ class _SupportTicketsCardState extends State<SupportTicketsCard> {
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
 
-    return Container(
-      width: screenWidth * 0.35,
-      height: 375,
-      margin: const EdgeInsets.only(left: 16, right: 10, bottom: 16),
-      decoration: BoxDecoration(
-        color: Colors.white,
+    return Card(
+      elevation: 2,
+      color: Theme.of(context).colorScheme.background,
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
       ),
-      padding: const EdgeInsets.all(15),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Support Tickets',
-                style: TextStyle(
-                  fontSize: 24,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                'View All',
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontSize: 24,
-                  decoration: TextDecoration.underline,
-                  decorationColor: Colors.blue,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 20),
-          ...List.generate(service.tickets.length, (index) {
-            final ticketList = service.tickets[index];
-            return Column(
+      // width: screenWidth * 0.35,
+      // height: 350,
+      // margin: const EdgeInsets.only(left: 16, right: 10, bottom: 15),
+      // decoration: BoxDecoration(
+      //   color: Theme.of(context).colorScheme.background,
+      //   borderRadius: BorderRadius.circular(16),
+      // ),
+      child: SizedBox(
+        width: screenWidth * 0.31,
+        height: 335,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Container(
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFDB6400),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(16),
+                      bottomRight: Radius.circular(16),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    child: Text(
+                      'Support Tickets',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 15),
+                  child: Text(
+                    'View All',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 20,
+                      decoration: TextDecoration.underline,
+                      decorationColor: Colors.blue,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 15),
+            ...List.generate(service.tickets.length, (index) {
+              final ticketList = service.tickets[index];
+              return Padding(
+                padding: const EdgeInsets.only(left: 10, right: 10),
+                child: Column(
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          height: 60,
-                          width: 8,
-                          decoration: BoxDecoration(
-                            color: ticketList.lineColor,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                        const SizedBox(width: 10),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        Row(
                           children: [
-                            Text(
-                              ticketList.titleName,
-                              style: const TextStyle(
-                                fontSize: 24,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500,
+                            Container(
+                              height: 50,
+                              width: 8,
+                              decoration: BoxDecoration(
+                                color: ticketList.lineColor,
+                                borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            Text(
-                              ticketList.timeAndDate,
-                              style: const TextStyle(
-                                fontSize: 15,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w400,
-                              ),
+                            const SizedBox(width: 10),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  ticketList.titleName,
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                Text(
+                                  ticketList.timeAndDate,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
+                        Icon(
+                          ticketList.icon,
+                          color: ticketList.color,
+                          size: 30,
+                        ),
                       ],
                     ),
-                    Icon(
-                      ticketList.icon,
-                      color: ticketList.color,
-                      size: 35,
-                    ),
+                    if (index != service.tickets.length - 1)
+                      const Divider(
+                        color: Colors.black,
+                        thickness: 1,
+                      ),
                   ],
                 ),
-                if (index != service.tickets.length - 1)
-                  const Divider(
-                    color: Colors.black,
-                    thickness: 1,
-                  ),
-              ],
-            );
-          }),
-        ],
+              );
+            }),
+          ],
+        ),
       ),
     );
   }

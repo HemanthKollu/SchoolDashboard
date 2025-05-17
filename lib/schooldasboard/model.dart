@@ -18,6 +18,9 @@ class SchoolInfo {
   final String startDate;
   final String endDate;
   final IconData personIcon;
+  final String correspondenceName;
+  final String correspondenceEmail;
+  final String correspondencePhone;
 
   SchoolInfo({
     required this.schoolName,
@@ -37,6 +40,9 @@ class SchoolInfo {
     required this.startDate,
     required this.endDate,
     required this.personIcon,
+    required this.correspondenceName,
+    required this.correspondenceEmail,
+    required this.correspondencePhone,
   });
 
   factory SchoolInfo.fromJSON(dynamic data) {
@@ -57,22 +63,28 @@ class SchoolInfo {
         selectedYear: data["SELECTED_YEAR"],
         startDate: data['START_DATE'],
         endDate: data['END_DATE'],
-        personIcon: data['PERSON_ICON']);
+        personIcon: data['PERSON_ICON'],
+        correspondenceName: data['CORRESPONDENCE_NAME'],
+        correspondenceEmail: data['CORRESPONDENCE_EMAIL'],
+        correspondencePhone: data['CORRESPONDENCE_NO']);
+    
   }
 }
 
 class ClassesInfo {
   final String noOfSchools;
   final String noOfPersons;
-  final String schoolTime;
+  final String noOfSchools1;
+  final String noOfPersons1;
 
-  ClassesInfo({required this.noOfSchools, required this.noOfPersons, required this.schoolTime});
+  ClassesInfo({required this.noOfSchools, required this.noOfPersons, required this.noOfSchools1, required this.noOfPersons1});
 
   factory ClassesInfo.fromJSON(dynamic data) {
     return ClassesInfo(
       noOfSchools: data["NO_OF_SCHOOLS"],
       noOfPersons: data["NO_OF_PERSONS"],
-      schoolTime: data["SCHOOL_TIME"],
+      noOfSchools1: data["NO_OF_SCHOOLS_1"],
+      noOfPersons1: data["NO_OF_PERSONS_1"],
     );
   }
 }
@@ -128,15 +140,14 @@ class DcDetailsModel {
 class FinanceModel {
   final String receivedDate;
   final String receivedAmount;
-  final Icon currencyIcon;
 
   FinanceModel({
     required this.receivedAmount,
     required this.receivedDate,
-    required this.currencyIcon,
+
   });
 
   factory FinanceModel.fromJSON(dynamic data) {
-    return FinanceModel(receivedAmount: data['RECEIVED_DATE'], receivedDate: data['RECEIVED_DATE'], currencyIcon: data['RECEIVED_DATE']);
+    return FinanceModel(receivedAmount: data['RECEIVED_DATE'], receivedDate: data['RECEIVED_DATE'],);
   }
 }

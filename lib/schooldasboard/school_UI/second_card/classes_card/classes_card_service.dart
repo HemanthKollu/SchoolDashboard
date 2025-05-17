@@ -25,5 +25,5 @@ class ClassesCardService {
     ]);
   }
 
-  final classesData = ClassesInfo(noOfSchools: '111', noOfPersons: '222', schoolTime: '2:30:33');
+  final classesData = ClassesInfo(noOfSchools: '111', noOfPersons: '222', noOfSchools1: '333', noOfPersons1: "444" );
 }

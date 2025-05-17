@@ -14,50 +14,69 @@ class _SupportVisitInfoCardState extends State<SupportVisitInfoCard> {
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
 
-    return Container(
-      width: screenWidth * 0.35,
-      height: 150,
-      margin: const EdgeInsets.only(left: 13, bottom: 16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Padding(
+      padding: const EdgeInsets.only(top: 10, left: 10, bottom: 10),
+      child: Card(
+        elevation: 2,
+        color: Theme.of(context).colorScheme.background,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: SizedBox(
+          width: screenWidth * 0.31,
+          height: 150,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Support Visit Info',
-                style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFDB6400),
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(16),
+                        bottomRight: Radius.circular(16),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      child: Text(
+                        'Support Visit Info',
+                        style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 15),
+                    child: Text(
+                      'View All',
+                      style: TextStyle(color: Colors.blue, fontSize: 20, decoration: TextDecoration.underline, decorationColor: Colors.blue),
+                    ),
+                  )
+                ],
               ),
-              Text(
-                'View All',
-                style: TextStyle(color: Colors.blue, fontSize: 14, decoration: TextDecoration.underline, decorationColor: Colors.blue),
-              )
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Container(
+                    width: 500,
+                    child: Slider(
+                        value: service.sliderValue,
+                        divisions: 2,
+                        label: '14/feb',
+                        onChanged: (value) {
+                          setState(() {
+                            service.sliderValue = value;
+                          });
+                        }),
+                  )
+                ],
+              ),
             ],
           ),
-          const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Container(
-                width: 500,
-                child: Slider(
-                    value: service.sliderValue,
-                    divisions: 2,
-                    label: '14/feb',
-                    onChanged: (value) {
-                      setState(() {
-                        service.sliderValue = value;
-                      });
-                    }),
-              )
-            ],
-          ),
-        ],
+        ),
       ),
     );
   }

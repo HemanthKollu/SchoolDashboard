@@ -13,9 +13,11 @@ class _SchoolDashboardState extends State<SchoolDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange.shade300,
-      body: Row(
-        children: const [FirstCard(), SecondCard()],
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Row(
+          children: const [FirstCard(), SecondCard()],
+        ),
       ),
     );
   }
