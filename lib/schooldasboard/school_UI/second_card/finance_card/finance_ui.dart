@@ -167,49 +167,52 @@ class _FinanceCardState extends State<FinanceCard> {
                               const SizedBox(height: 10),
                               SizedBox(
                                   height: 150,
-                                  child: ListView.builder(
-                                      itemCount: _commitmentsList.length,
-                                      itemBuilder: (context, index) {
-                                        return ListTile(
-                                          title: SingleChildScrollView(
-                                            scrollDirection: Axis.vertical,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: ListView.builder(
+                                        itemCount: _commitmentsList.length,
+                                        itemBuilder: (context, index) {
+                                          return Container(
+                                            padding: const EdgeInsets.symmetric(vertical: 2.0),
+                                            margin: const EdgeInsets.only(bottom: 5),
+                                            decoration: BoxDecoration(
+                                              color: Theme.of(context).colorScheme.background,
+                                              borderRadius: BorderRadius.circular(10),
+                                            ),
                                             child: Column(
                                               children: [
-                                                Padding(
-                                                  padding: const EdgeInsets.all(3.0),
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                      color: Theme.of(context).colorScheme.background,
-                                                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                                                    ),
-                                                    child: Padding(
-                                                      padding: const EdgeInsets.all(3.0),
-                                                      child: Row(
-                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                        children: [
-                                                          Text(
-                                                            _commitmentsList[index].receivedDate,
-                                                            style: const TextStyle(fontSize: 13),
-                                                          ),
-                                                          const Row(
-                                                            children: [
-                                                              Icon(Icons.currency_rupee, size: 15),
-                                                              Text("1,00,000",
-                                                                  style: TextStyle(
-                                                                    fontSize: 13,
-                                                                  )),
-                                                            ],
-                                                          )
-                                                        ],
-                                                      ),
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    color: Theme.of(context).colorScheme.background,
+                                                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                  ),
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.all(3.0),
+                                                    child: Row(
+                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                      children: [
+                                                        Text(
+                                                          _commitmentsList[index].receivedDate,
+                                                          style: const TextStyle(fontSize: 13),
+                                                        ),
+                                                        const Row(
+                                                          children: [
+                                                            Icon(Icons.currency_rupee, size: 15),
+                                                            Text("1,00,000",
+                                                                style: TextStyle(
+                                                                  fontSize: 13,
+                                                                )),
+                                                          ],
+                                                        )
+                                                      ],
                                                     ),
                                                   ),
                                                 ),
                                               ],
                                             ),
-                                          ),
-                                        );
-                                      }))
+                                          );
+                                        }),
+                                  ))
                             ],
                           ),
                         ),
@@ -239,13 +242,19 @@ class _FinanceCardState extends State<FinanceCard> {
                               const SizedBox(height: 10),
                               SizedBox(
                                   height: 150,
-                                  child: ListView.builder(
-                                      shrinkWrap: true,
-                                      itemCount: _paymentHistoryList.length,
-                                      itemBuilder: (context, index) {
-                                        return ListTile(
-                                          title: SingleChildScrollView(
-                                            scrollDirection: Axis.vertical,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: ListView.builder(
+                                        shrinkWrap: true,
+                                        itemCount: _paymentHistoryList.length,
+                                        itemBuilder: (context, index) {
+                                          return Container(
+                                            padding: const EdgeInsets.symmetric(vertical: 2.0),
+                                            margin: const EdgeInsets.only(bottom: 5),
+                                            decoration: BoxDecoration(
+                                              color: Theme.of(context).colorScheme.background,
+                                              borderRadius: BorderRadius.circular(10),
+                                            ),
                                             child: Column(
                                               children: [
                                                 Container(
@@ -277,9 +286,9 @@ class _FinanceCardState extends State<FinanceCard> {
                                                 ),
                                               ],
                                             ),
-                                          ),
-                                        );
-                                      }))
+                                          );
+                                        }),
+                                  ))
                             ],
                           ),
                         )
